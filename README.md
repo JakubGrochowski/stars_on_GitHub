@@ -1,2 +1,2 @@
-#Python_stars_on_GitHub
+# stars_on_GitHub
 Python projects with the most stars on GitHub
