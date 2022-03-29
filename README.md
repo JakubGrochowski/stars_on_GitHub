@@ -1,2 +1,2 @@
 # stars_on_GitHub
-Python projects with the most stars on GitHub
+Project showing the Python repositories with the most stars on GitHub
