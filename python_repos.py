@@ -10,7 +10,7 @@ print(f"Kod stanu: {r.status_code}")
 response_dict = r.json()
 print(f"Calkowita liczba repozytoriow: {response_dict['total_count']}")
 
-# Pretworzenie informacji o repozytoriach
+# Przetworzenie informacji o repozytoriach
 repo_dicts = response_dict['items']
 print(f"Liczba zwroconych repozytoriow: {len(repo_dicts)}")
 
