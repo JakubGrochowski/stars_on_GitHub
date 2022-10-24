@@ -1,15 +1,14 @@
 import requests
 
-from plotly.graph_objs import bar
 from plotly import offline
 
-# Wykonanie wywolania API i zachowanie otrzymanej odpowiedzi
-URL ='https://api.github.com/search/repositories?q=language:python&sort=star'
+# Make an API call and save the response received
+URL = 'https://api.github.com/search/repositories?q=language:python&sort=star'
 headers = {'Accept': 'application/vnd.github.v3+json'}
 r = requests.get(URL, headers=headers)
-print(f"Kod stanu: {r.status_code}")
+print(f"Status code: {r.status_code}")
 
-# Przetworzenie wynikow
+# Processing the results
 response_dict = r.json()
 repo_dicts = response_dict['items']
 repo_links, stars, labels = [], [], []
@@ -25,7 +24,7 @@ for repo_dict in repo_dicts:
     label = f"{owner}<br />{description}"
     labels.append(label)
 
-# Utworzenie wizualizacji
+# Create a visualization
 data = [{
     'type': 'bar',
     'x': repo_links,
@@ -39,18 +38,18 @@ data = [{
 }]
 
 my_layout = {
-    'title': 'Oznaczone największą liczbą gwiazdek projekty Pythona w serwisie GitHub',
+    'title': 'The most starred Python projects on GitHub',
     'titlefont': {'size': 28},
     'xaxis': {
-        'title': 'Repozytorium',
-        'titlefont': {'size': 24},
-        'tickfont' : {'size': 14},
-    },    
-    'yaxis': {
-        'title': 'Gwiazdki',
+        'title': 'Repository',
         'titlefont': {'size': 24},
         'tickfont': {'size': 14},
-    },    
+    },
+    'yaxis': {
+        'title': 'Stars',
+        'titlefont': {'size': 24},
+        'tickfont': {'size': 14},
+    },
 }
 
 fig = {'data': data, 'layout': my_layout}
